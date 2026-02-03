@@ -1,21 +1,33 @@
+#________________BASICS________________
 CC := cc
 CFLAGS := -Wall -Werror -Wextra -g
 
-INCLUDES_DIR = includes/
+INCLUDES_DIR = -Iincludes
 NAME := so_long
 
-#________________RULES________________
+LIBFT := libft.a
 
+#________________FILES________________
+SRCS := srcs/main.c \
+				srcs/parser/parser.c
+
+OBJS := $(SRCS:.c=.o)
+
+#________________RULES________________
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(LIBFT) $(OBJS)
+	@printf "\n✔ BUILD COMPLETE\n"
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(INCLUDES_DIR) -o $(NAME)
 
+
+#________________LIBS________________
 $(LIBFT):
-
-$(GNL):
+	@echo "Libft [COMPILING]"
+	@$(MAKE) -C $(INCLUDES_DIR)/libft --no-print-directory
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES_DIR) -c $< -o $@
 
 clean:
 	@echo "[CLEAN]"
@@ -27,4 +39,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re
