@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 15:23:49 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/03 14:50:50 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:19:29 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,6 @@
 
 int	error(char *str);
 int	check_extension(char *str);
+int	main_parser(int argc, char **argv);
 
 #endif
