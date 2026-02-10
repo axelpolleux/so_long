@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 15:24:00 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/10 10:45:10 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/10 18:08:21 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,15 @@ int	error(char *str)
 int	main(int argc, char **argv)
 {
 	char	**map;
+	int		i;
 
+	i = 0;
 	if (!main_parser(argc, argv, &map))
 		return (0);
+	while (map[i])
+	{
+		printf("%s", map[i]);
+		i++;
+	}
 	return (0);
 }

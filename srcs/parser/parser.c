@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:38:20 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/10 12:20:04 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/10 18:17:43 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,19 @@
 #include "libft/libft.h"
 #include "so_long.h"
 
-// static int	check_border(void)
-// {
-// 	return (1);
-// }
+static int	check_border(char **map)
+{
+	int	i;
 
-void	get_dimension(char *filepath, int *height, int *width)
+	i = 0;
+	while (map[i])
+	{
+		i++;
+	}
+	return (0);
+}
+
+static void	get_dimension(char *filepath, int *height, int *width)
 {
 	int		fd;
 	int		height_res;
@@ -34,14 +41,22 @@ void	get_dimension(char *filepath, int *height, int *width)
 	}
 	height_res = 0;
 	width_res = 0;
-	str = "";
-	while (str)
+	str = NULL;
+	while ((str = get_next_line(fd)))
 	{
-		str = get_next_line(fd);
+		if (width_res > 0)
+		{
+			if (width_res != (int)ft_strlen(str))
+			{
+				width_res = -1;
+				break ;
+			}
+		}
+		width_res = ft_strlen(str);
 		height_res++;
 	}
-	*height = height_res - 1;
-	*width = width_res;
+	*height = height_res;
+	*width = width_res - 1;
 	close(fd);
 }
 
@@ -53,12 +68,10 @@ static char	**map_maker(char *filepath, int height)
 
 	i = 0;
 	fd = open(filepath, O_RDONLY);
-	res = malloc(sizeof(char *) * height);
+	res = malloc(sizeof(char *) * height + 1);
 	while (i < height)
-	{
-		res[i] = get_next_line(fd);
-		i++;
-	}
+		res[i++] = get_next_line(fd);
+	res[i] = NULL;
 	close(fd);
 	return (res);
 }
@@ -75,8 +88,12 @@ int	main_parser(int argc, char **argv, char ***map)
 				- 4), ".ber", 4) != 0)
 		return (error("Only .ber files\n"));
 	else if (height <= 0)
-		return (error("File doesn't exist, cannot be opened, or file is empty\n"));
+		return (error("File doesn't exist, or is empty\n"));
+	else if (width < 0)
+		return (error("Map is not rectangular\n"));
 	*map = map_maker(argv[1], height);
+	if (!check_border(*map))
+		return (error("Map must be surrounded by walls"));
 	printf("Hauteur: %d\nLargeur: %d\n", height, width);
 	return (1);
 }
