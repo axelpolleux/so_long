@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:38:20 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/10 18:17:43 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/11 09:25:46 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ static int	check_border(char **map)
 
 	i = 0;
 	while (map[i])
-	{
 		i++;
-	}
-	return (0);
+	return (1);
 }
 
 static void	get_dimension(char *filepath, int *height, int *width)
