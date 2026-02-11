@@ -6,10 +6,11 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 15:24:00 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/11 15:00:25 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/11 17:53:56 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "MacroLibX/includes/mlx.h"
 #include "libft/libft.h"
 #include "so_long.h"
 
@@ -23,15 +24,8 @@ int	error(char *str)
 int	main(int argc, char **argv)
 {
 	char	**map;
-	int		i;
 
-	i = 0;
 	if (!main_parser(argc, argv, &map))
 		return (0);
-	while (map[i])
-	{
-		printf("%s", map[i]);
-		i++;
-	}
 	return (0);
 }
