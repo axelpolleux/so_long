@@ -6,12 +6,12 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 15:24:00 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/10 18:08:21 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/11 15:00:25 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
 #include "libft/libft.h"
+#include "so_long.h"
 
 int	error(char *str)
 {

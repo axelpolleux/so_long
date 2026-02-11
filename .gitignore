@@ -54,5 +54,12 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# others
 So_long_map_generator/
 .env
+.vscode/
+
+# other executables
+so_long
+maps/

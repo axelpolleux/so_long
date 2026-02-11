@@ -6,29 +6,40 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:38:20 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/11 09:25:46 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/11 16:41:46 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line/get_next_line.h"
 #include "libft/libft.h"
 #include "so_long.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-static int	check_border(char **map)
+static int	check_border(char **map, int height)
 {
 	int	i;
+	int	j;
 
 	i = 0;
+	(void)j;
 	while (map[i])
+	{
+		j = 0;
+		if (i == 0 || i == height - 1)
+		{
+			while (map[i][++j])
+				if (map[i][j] != '1' && map[i][j] != '\n')
+					return (0);
+		}
 		i++;
+	}
 	return (1);
 }
 
 static void	get_dimension(char *filepath, int *height, int *width)
 {
 	int		fd;
-	int		height_res;
-	int		width_res;
 	char	*str;
 
 	fd = open(filepath, O_RDONLY);
@@ -37,24 +48,23 @@ static void	get_dimension(char *filepath, int *height, int *width)
 		*height = -1;
 		return ;
 	}
-	height_res = 0;
-	width_res = 0;
+	*height = 0;
+	*width = 0;
 	str = NULL;
 	while ((str = get_next_line(fd)))
 	{
-		if (width_res > 0)
+		if (*width > 0)
 		{
-			if (width_res != (int)ft_strlen(str))
+			if (*width != (int)ft_strlen(str))
 			{
-				width_res = -1;
+				*width = -1;
 				break ;
 			}
 		}
-		width_res = ft_strlen(str);
-		height_res++;
+		*width = ft_strlen(str);
+		*height += 1;
+		free(str);
 	}
-	*height = height_res;
-	*width = width_res - 1;
 	close(fd);
 }
 
@@ -90,8 +100,8 @@ int	main_parser(int argc, char **argv, char ***map)
 	else if (width < 0)
 		return (error("Map is not rectangular\n"));
 	*map = map_maker(argv[1], height);
-	if (!check_border(*map))
-		return (error("Map must be surrounded by walls"));
+	if (!check_border(*map, height))
+		return (error("Map must be surrounded by walls\n"));
 	printf("Hauteur: %d\nLargeur: %d\n", height, width);
 	return (1);
 }
