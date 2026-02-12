@@ -6,23 +6,20 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:38:20 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/11 17:50:03 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/12 17:23:38 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line/get_next_line.h"
 #include "libft/libft.h"
 #include "so_long.h"
-#include <stdio.h>
-#include <stdlib.h>
 
-static int	check_border(char **map, int height)
+static int	check_border(char **map, int height, int width)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	(void)j;
 	while (map[i])
 	{
 		j = 0;
@@ -31,6 +28,15 @@ static int	check_border(char **map, int height)
 			while (map[i][++j])
 				if (map[i][j] != '1' && map[i][j] != '\n')
 					return (0);
+		}
+		else
+		{
+			while (map[i][++j])
+			{
+				if ((j == 0 || j == width - 1) && map[i][j] != '\n'
+					&& map[i][j] != '1')
+					return (0);
+			}
 		}
 		i++;
 	}
@@ -100,7 +106,7 @@ int	main_parser(int argc, char **argv, char ***map)
 	else if (width < 0)
 		return (error("Map is not rectangular\n"));
 	*map = map_maker(argv[1], height);
-	if (!check_border(*map, height))
+	if (!check_border(*map, height, width))
 		return (error("Map must be surrounded by walls\n"));
 	printf("Hauteur: %d\nLargeur: %d\n", height, width);
 	return (1);
