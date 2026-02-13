@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:38:20 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/12 17:23:38 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/13 10:57:44 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static void	get_dimension(char *filepath, int *height, int *width)
 	}
 	*height = 0;
 	*width = 0;
-	str = NULL;
-	while ((str = get_next_line(fd)))
+	str = get_next_line(fd);
+	while (str)
 	{
 		if (*width > 0)
 		{
@@ -69,8 +69,9 @@ static void	get_dimension(char *filepath, int *height, int *width)
 		}
 		*width = ft_strlen(str);
 		*height += 1;
-		free(str);
+		str = get_next_line(fd);
 	}
+	free(str);
 	close(fd);
 }
 
