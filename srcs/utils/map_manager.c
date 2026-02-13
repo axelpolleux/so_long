@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 17:07:11 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/13 18:58:57 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/13 19:31:27 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_border(char **map, int height, int width)
 		{
 			while (map[i][++j])
 				if (map[i][j] != '1' && map[i][j] != '\n')
-					return (error("a house without any side walls ? :-|"));
+					return (error("you forgot up and bottom surroundings"));
 		}
 		else
 		{
@@ -33,7 +33,7 @@ int	check_border(char **map, int height, int width)
 			{
 				if ((j == 0 || j == width - 1) && map[i][j] != '\n'
 					&& map[i][j] != '1')
-					return (error("Map must be surrounded in both sides"));
+					return (error("a house without any side walls ? :-|"));
 				j++;
 			}
 		}
@@ -67,10 +67,10 @@ int	counter(char **map, int character)
 int	check_points(char **map)
 {
 	if (counter(map, 'P') != 1)
-		return (error("I've never seen a game without a player"));
+		return (error("I've never seen a game without a player\n(͠≖ ͜ʖ͠≖)"));
 	if (counter(map, 'E') != 1)
-		return (error("Where will you go, without any exit ?"));
+		return (error("Where will you go, without any exit ?\n(ง ͠° ͟ʖ ͡°)ง"));
 	if (counter(map, 'C') < 1)
-		return (error("I'll get bored without any collectibles"));
+		return (error("I'll get bored without any collectibles\n(ಥ﹏ಥ)"));
 	return (1);
 }
