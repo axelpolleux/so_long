@@ -6,13 +6,14 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:38:20 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/13 10:57:44 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/13 12:11:09 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line/get_next_line.h"
 #include "libft/libft.h"
 #include "so_long.h"
+#include <stdlib.h>
 
 static int	check_border(char **map, int height, int width)
 {
@@ -31,11 +32,12 @@ static int	check_border(char **map, int height, int width)
 		}
 		else
 		{
-			while (map[i][++j])
+			while (map[i][j])
 			{
-				if ((j == 0 || j == width - 1) && map[i][j] != '\n'
+				if ((j == 0 || j == width - 2) && map[i][j] != '\n'
 					&& map[i][j] != '1')
 					return (0);
+				j++;
 			}
 		}
 		i++;
@@ -83,7 +85,7 @@ static char	**map_maker(char *filepath, int height)
 
 	i = 0;
 	fd = open(filepath, O_RDONLY);
-	res = malloc(sizeof(char *) * height + 1);
+	res = malloc(sizeof(char *) * (height + 1));
 	while (i < height)
 		res[i++] = get_next_line(fd);
 	res[i] = NULL;
