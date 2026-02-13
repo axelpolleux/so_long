@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:38:20 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/13 19:29:48 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/13 19:38:26 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static char	**map_maker(char *filepath, int height)
 	fd = open(filepath, O_RDONLY);
 	res = malloc(sizeof(char *) * (height + 1));
 	while (i < height)
-		res[i++] = get_next_line(fd);
+		res[i++] = get_line(fd);
 	res[i] = NULL;
 	close(fd);
 	return (res);
@@ -81,6 +81,5 @@ int	main_parser(int argc, char **argv, char ***map)
 	*map = map_maker(argv[1], height);
 	if (!check_border(*map, height, width) || !check_points(*map))
 		return (0);
-	printf("Hauteur: %d\nLargeur: %d\n", height, width);
 	return (1);
 }

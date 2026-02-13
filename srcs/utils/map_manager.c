@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 17:07:11 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/13 19:31:27 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/13 19:34:19 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_border(char **map, int height, int width)
 		{
 			while (map[i][++j])
 				if (map[i][j] != '1' && map[i][j] != '\n')
-					return (error("you forgot up and bottom surroundings"));
+					return (error("you forgot up and bottom walls -_-"));
 		}
 		else
 		{
