@@ -17,7 +17,8 @@ GNL_SRCS			:=	$(GNL_DIR)get_next_line.c \
 SRCS					:=	$(GNL_SRCS) \
 									srcs/main.c \
 									srcs/parser/parser.c \
-									srcs/utils/str_manage.c
+									srcs/utils/str_manager.c \
+									srcs/utils/map_manager.c
 
 OBJS					:= $(SRCS:.c=.o)
 
