@@ -1,12 +1,12 @@
 #________________BASICS________________
-CC						:= cc
+CC					:= cc
 CFLAGS				:= -Wall -Werror -Wextra -g
 
-INCLUDES_DIR	:= -Iincludes/
+INCLUDES_DIR		:= -Iincludes/
 NAME					:= so_long
 
 LIBFT_DIR			:= includes/libft/
-LIBFT					:= $(LIBFT_DIR)libft.a
+LIBFT				:= $(LIBFT_DIR)libft.a
 
 GNL_DIR				:= includes/get_next_line/
 GNL_SRCS			:=	$(GNL_DIR)get_next_line.c \
@@ -16,7 +16,8 @@ GNL_SRCS			:=	$(GNL_DIR)get_next_line.c \
 
 SRCS					:=	$(GNL_SRCS) \
 									srcs/main.c \
-									srcs/parser/parser.c
+									srcs/parser/parser.c \
+									srcs/utils/str_manage.c
 
 OBJS					:= $(SRCS:.c=.o)
 
