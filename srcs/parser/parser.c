@@ -6,13 +6,44 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:38:20 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/13 14:58:36 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/13 12:11:09 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line/get_next_line.h"
 #include "libft/libft.h"
 #include "so_long.h"
+#include <stdlib.h>
+
+static int	check_border(char **map, int height, int width)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		if (i == 0 || i == height - 1)
+		{
+			while (map[i][++j])
+				if (map[i][j] != '1' && map[i][j] != '\n')
+					return (0);
+		}
+		else
+		{
+			while (map[i][j])
+			{
+				if ((j == 0 || j == width - 2) && map[i][j] != '\n'
+					&& map[i][j] != '1')
+					return (0);
+				j++;
+			}
+		}
+		i++;
+	}
+	return (1);
+}
 
 static void	get_dimension(char *filepath, int *height, int *width)
 {
@@ -72,16 +103,14 @@ int	main_parser(int argc, char **argv, char ***map)
 		return (error("Only 1 argument\n"));
 	else if (ft_strlen(argv[1]) <= 4 || ft_strncmp(argv[1] + (ft_strlen(argv[1])
 				- 4), ".ber", 4) != 0)
-		return (error("Only .ber files"));
+		return (error("Only .ber files\n"));
 	else if (height <= 0)
-		return (error("File doesn't exist, or is empty"));
-	// else if (height < 3 || width < 3)
-	//	return (error("map is too small"));
+		return (error("File doesn't exist, or is empty\n"));
 	else if (width < 0)
-		return (error("Map is not rectangular"));
+		return (error("Map is not rectangular\n"));
 	*map = map_maker(argv[1], height);
 	if (!check_border(*map, height, width))
-		return (error("Map must be surrounded by walls"));
+		return (error("Map must be surrounded by walls\n"));
 	printf("Hauteur: %d\nLargeur: %d\n", height, width);
 	return (1);
 }
