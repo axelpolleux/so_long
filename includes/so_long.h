@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 15:23:49 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/13 12:15:58 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/13 17:12:38 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-int	count_lines(char *filepath);
-int	error(char *str);
-int	check_extension(char *str);
-int	main_parser(int argc, char **argv, char ***map);
-int	check_border(char **map, int height, int width);
+int	    count_lines(char *filepath);
+int	    error(char *str);
+int	    check_extension(char *str);
+int	    main_parser(int argc, char **argv, char ***map);
+int	    check_border(char **map, int height, int width);
+char	*get_line(int fd);
 
 #endif
