@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:38:20 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/13 19:38:26 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/16 14:32:19 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int	main_parser(int argc, char **argv, char ***map)
 	if (!get_dimension(argv[1], &height, &width))
 		return (0);
 	*map = map_maker(argv[1], height);
-	if (!check_border(*map, height, width) || !check_points(*map))
+	if (!check_border(*map, height, width) || !check_points(*map)
+		|| !main_fill(*map))
 		return (0);
 	return (1);
 }

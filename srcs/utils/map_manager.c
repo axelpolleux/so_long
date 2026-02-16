@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 17:07:11 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/13 19:34:19 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/16 11:21:20 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,14 @@ int	counter(char **map, int character)
 
 int	check_points(char **map)
 {
-	if (counter(map, 'P') != 1)
+	if (counter(map, 'P') < 1)
 		return (error("I've never seen a game without a player\n(͠≖ ͜ʖ͠≖)"));
-	if (counter(map, 'E') != 1)
+	if (counter(map, 'P') > 1)
+		return (error("You're not alone in your head, just one player\n0_0"));
+	if (counter(map, 'E') < 1)
 		return (error("Where will you go, without any exit ?\n(ง ͠° ͟ʖ ͡°)ง"));
+	if (counter(map, 'E') > 1)
+		return (error("Where will I go, too much exit !\n( •͡˘ _•͡˘)ノð"));
 	if (counter(map, 'C') < 1)
 		return (error("I'll get bored without any collectibles\n(ಥ﹏ಥ)"));
 	return (1);

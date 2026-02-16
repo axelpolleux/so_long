@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/02 15:24:00 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/16 14:02:53 by apolleux         ###   ########.fr       */
+/*   Created: 2026/02/16 11:56:11 by apolleux          #+#    #+#             */
+/*   Updated: 2026/02/16 16:07:57 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MacroLibX/includes/mlx.h"
-#include "libft/libft.h"
 #include "so_long.h"
 
-int	error(char *str)
-{
-	ft_putstr_fd("Error !\n", 2);
-	ft_putstr_fd(str, 2);
-	ft_putstr_fd("...\n", 2);
-	return (0);
-}
+// int	get_pixel(int x, int y)
+//{
+//	return (0);
+//}
 
-int	main(int argc, char **argv)
-{
-	int		i;
-	char	**map;
+// void	flood(int x, int y, int new_col, int old_col)
+//{
+//	// top
+//	flood(x - 1, y, new_col, old_col);
+//	// bottom
+//	flood(x + 1, y, new_col, old_col);
+//	// left
+//	flood(x, y - 1, new_col, old_col);
+//	// right
+//	flood(x, y + 1, new_col, old_col);
+//}
 
-	i = 0;
-	if (!main_parser(argc, argv, &map))
-		return (1);
-	while (map[i])
-		printf("%s\n", map[i++]);
-	return (0);
+int	main_fill(char **map)
+{
+	(void)map;
+	// return (error("Flood fill didn't make it !"));
+	return (1);
 }
