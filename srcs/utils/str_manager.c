@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 17:09:21 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/13 17:45:45 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/17 12:09:43 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,30 @@ char	*get_line(int fd)
 	char	*res;
 
 	tmp = get_next_line(fd);
+	if (!tmp)
+		return (NULL);
 	limit = ft_strichr(tmp, '\n');
 	if (limit == -1)
 		return (tmp);
 	res = ft_substr(tmp, 0, limit);
+	if (!res)
+	{
+		free(tmp);
+		return (NULL);
+	}
 	free(tmp);
 	return (res);
+}
+
+void	drain_gnl(int fd)
+{
+	char	*line;
+
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		free(line);
+	}
 }

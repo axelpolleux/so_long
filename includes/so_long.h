@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 15:23:49 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/16 16:01:47 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/17 12:00:14 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ int	    error(char *str);
 int	    check_extension(char *str);
 int	    main_parser(int argc, char **argv, char ***map);
 int	    check_border(char **map, int height, int width);
+int		counter(char **map, int character);
 int		check_points(char **map);
+void	free_map(char **map);
 char	*get_line(int fd);
-int		main_fill(char **map);
+void	drain_gnl(int fd);
+int		main_fill(char **map, int width, int height);
 
 #endif

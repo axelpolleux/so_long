@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:38:20 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/16 14:32:19 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/17 14:38:04 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,41 @@
 #include "libft/libft.h"
 #include "so_long.h"
 
+static int	dimension_loop(int fd, int *height, int *width)
+{
+	char	*str;
+
+	while (1)
+	{
+		str = get_line(fd);
+		if (!str)
+			break ;
+		if (*width != 0 && *width != (int)ft_strlen(str))
+		{
+			free(str);
+			drain_gnl(fd);
+			close(fd);
+			*width = -1;
+			return (0);
+		}
+		*width = (int)ft_strlen(str);
+		*height += 1;
+		free(str);
+	}
+	return (1);
+}
+
 static int	get_dimension(char *filepath, int *height, int *width)
 {
 	int		fd;
-	char	*str;
 
 	fd = open(filepath, O_RDONLY);
 	if (fd == -1)
 		return (error("File doesn't exist\nskill issue ☉ ‿ ⚆ "));
 	*height = 0;
 	*width = 0;
-	str = get_line(fd);
-	while (str)
-	{
-		if (*width > 0)
-		{
-			if (*width != (int)ft_strlen(str))
-			{
-				*width = -1;
-				return (error("I don't like maths, and it's not rectangular"));
-			}
-		}
-		*width = ft_strlen(str);
-		*height += 1;
-		str = get_line(fd);
-	}
-	free(str);
+	if (dimension_loop(fd, height, width) == 0)
+		return (error("I don't like maths, and it's not rectangular"));
 	close(fd);
 	if (*height == 0)
 		return (error("(◔_◔) An empty map ?\ninteresting"));
@@ -48,18 +57,41 @@ static int	get_dimension(char *filepath, int *height, int *width)
 	return (1);
 }
 
+static int	fill_map(char **res, int fd, int height)
+{
+	int	i;
+
+	i = 0;
+	while (res && i < height)
+	{
+		res[i] = get_line(fd);
+		if (!res[i])
+		{
+			res[i] = NULL;
+			free_map(res);
+			close(fd);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
 static char	**map_maker(char *filepath, int height)
 {
-	int		i;
 	int		fd;
 	char	**res;
 
-	i = 0;
 	fd = open(filepath, O_RDONLY);
-	res = malloc(sizeof(char *) * (height + 1));
-	while (i < height)
-		res[i++] = get_line(fd);
-	res[i] = NULL;
+	res = ft_calloc(sizeof(char *), height + 1);
+	if (fd == -1 || !res)
+	{
+		free(res);
+		close(fd);
+		return (NULL);
+	}
+	if (!fill_map(res, fd, height))
+		return (0);
 	close(fd);
 	return (res);
 }
@@ -79,8 +111,14 @@ int	main_parser(int argc, char **argv, char ***map)
 	if (!get_dimension(argv[1], &height, &width))
 		return (0);
 	*map = map_maker(argv[1], height);
+	if (!*map)
+		return (error("Malloc failed while reading map"));
 	if (!check_border(*map, height, width) || !check_points(*map)
-		|| !main_fill(*map))
+		|| !main_fill(*map, width, height))
+	{
+		free_map(*map);
+		*map = NULL;
 		return (0);
+	}
 	return (1);
 }

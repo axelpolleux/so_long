@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flood_fill.c                                       :+:      :+:    :+:   */
+/*   memory_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/17 11:37:19 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/17 11:54:40 by apolleux         ###   ########.fr       */
+/*   Created: 2026/02/17 13:44:04 by apolleux          #+#    #+#             */
+/*   Updated: 2026/02/17 13:44:39 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "so_long.h"
 
-int	main_fill(char **map, int width, int height)
+void	free_map(char **map)
 {
-	(void)map;
-	(void)width;
-	(void)height;
-	return (1);
+	int	i;
+
+	if (!map)
+		return ;
+	i = 0;
+	while (map[i])
+		free(map[i++]);
+	free(map);
 }

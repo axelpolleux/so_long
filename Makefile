@@ -19,7 +19,8 @@ SRCS					:=	$(GNL_SRCS) \
 									srcs/parser/parser.c \
 									srcs/parser/flood_fill.c \
 									srcs/utils/str_manager.c \
-									srcs/utils/map_manager.c
+									srcs/utils/map_manager.c \
+									srcs/utils/memory_map.c
 
 OBJS					:= $(SRCS:.c=.o)
 

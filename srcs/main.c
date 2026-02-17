@@ -32,5 +32,6 @@ int	main(int argc, char **argv)
 		return (1);
 	while (map[i])
 		printf("%s\n", map[i++]);
+	free_map(map);
 	return (0);
 }
