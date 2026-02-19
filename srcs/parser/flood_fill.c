@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 11:37:19 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/19 18:22:06 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/19 18:49:44 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main_fill(char **map)
 	if (found_e != 1 || counter(copy, 'C'))
 	{
 		free_map(copy);
-		return (error("Flood_fill: map is not reachable ($︵$)"));
+		return (error("Flood_fill: all objects are not reachable ($︵$)"));
 	}
 	free_map(copy);
 	return (1);
