@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:38:20 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/17 14:38:04 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/19 18:06:57 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,14 @@ static int	dimension_loop(int fd, int *height, int *width)
 
 static int	get_dimension(char *filepath, int *height, int *width)
 {
-	int		fd;
+	int	fd;
 
 	fd = open(filepath, O_RDONLY);
 	if (fd == -1)
-		return (error("File doesn't exist\nskill issue ☉ ‿ ⚆ "));
+	{
+		ft_putstr_fd("File doesn't exist or is not accessible\n", 2);
+		return (error("skill issue ☉ ‿ ⚆ "));
+	}
 	*height = 0;
 	*width = 0;
 	if (dimension_loop(fd, height, width) == 0)
@@ -114,7 +117,7 @@ int	main_parser(int argc, char **argv, char ***map)
 	if (!*map)
 		return (error("Malloc failed while reading map"));
 	if (!check_border(*map, height, width) || !check_points(*map)
-		|| !main_fill(*map, width, height))
+		|| !not_this_char(*map, "10CPE") || !main_fill(*map))
 	{
 		free_map(*map);
 		*map = NULL;

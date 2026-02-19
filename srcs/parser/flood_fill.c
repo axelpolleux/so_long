@@ -6,40 +6,47 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 11:37:19 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/17 19:31:14 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/19 18:22:06 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "so_long.h"
 
-void	flood(int x, int y, char **map)
+static void	flood(int x, int y, char **map, int *found_e)
 {
-	//right
-	if (map[x + 1][y] != '1')
-		flood(x++, y, map);
-	//left
-	if (map[x - 1][y] != '1')
-		flood(x--, y, map);
-	//top
-	if (map[x][y - 1] != '1')
-		flood(x, y--, map);
-	//bottom
-	if (map[x][y + 1] != '1')
-		flood(x, y++, map);
+	if (map[x][y] == '1' || map[x][y] == 'X')
+		return ;
+	if (map[x][y] == 'E')
+	{
+		*found_e = 1;
+		return ;
+	}
+	map[x][y] = 'X';
+	flood(x + 1, y, map, found_e);
+	flood(x -1, y, map, found_e);
+	flood(x, y + 1, map, found_e);
+	flood(x, y - 1, map, found_e);
 }
 
-int	main_fill(char **map, int width, int height)
+int	main_fill(char **map)
 {
-	int	x;
-	int	y;
-
-	(void)width;
-	(void)height;
-	x = 1;
-	y = 1;
+	int		x_player;
+	int		y_player;
 	char	**copy;
-	copy = copy_map(map, height);
-	flood(x, y, copy);
+	int		found_e;
+
+	x_player = 1;
+	y_player = 1;
+	copy = copy_map(map);
+	found_e = 0;
+	get_coord(&x_player, &y_player, 'P', copy);
+	flood(x_player, y_player, copy, &found_e);
+	if (found_e != 1 || counter(copy, 'C'))
+	{
+		free_map(copy);
+		return (error("Flood_fill: map is not reachable ($︵$)"));
+	}
+	free_map(copy);
 	return (1);
 }
