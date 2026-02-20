@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axel <axel@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:37:03 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/20 16:31:03 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/20 19:09:43 by axel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MacroLibX/includes/mlx.h"
 #include "so_long.h"
 
 void	game_engine(char **map)
