@@ -1,1 +1,0 @@
-let char text_input = document.querySelector("#text_input")
