@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 15:23:49 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/19 18:06:48 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/20 15:43:38 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,40 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-int	    count_lines(char *filepath);
-int	    error(char *str);
-int	    check_extension(char *str);
-int	    main_parser(int argc, char **argv, char ***map);
-int	    check_border(char **map, int height, int width);
-int		counter(char **map, int character);
-int		check_points(char **map);
+typedef struct s_player
+{
+	int	can_exit;
+	int	pos_x;
+	int	pos_y;
+}		t_player;
+
+//______MAIN______
+int		error(char *str);
+
+//______PARSER______
+int		main_parser(int argc, char **argv, char ***map);
+
+//	file management
+int		check_extension(char *str);
+int		count_lines(char *filepath);
+
+//	memory management
+char	**copy_map(char **map);
 void	free_map(char **map);
+
+//	map management
 char	*get_line(int fd);
+int		check_border(char **map, int height, int width);
 void	drain_gnl(int fd);
 int		main_fill(char **map);
-int		not_this_char(char **map, char *chars);
-char	**copy_map(char **map);
+
+//	objects management
+int		counter(char **map, int character);
 void	get_coord(int *x, int *y, char find, char **map);
+int		check_points(char **map);
+int		not_this_char(char **map, char *chars);
+
+//______GAME______
+void	game_engine(char **map);
 
 #endif

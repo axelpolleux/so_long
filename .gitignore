@@ -61,5 +61,6 @@ So_long_map_generator/
 .vscode/
 
 # other executables
+*.ber
 so_long
 maps/

@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 11:37:19 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/19 18:49:44 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/20 11:15:27 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ static void	flood(int x, int y, char **map, int *found_e)
 	if (map[x][y] == '1' || map[x][y] == 'X')
 		return ;
 	if (map[x][y] == 'E')
-	{
 		*found_e = 1;
-		return ;
-	}
 	map[x][y] = 'X';
 	flood(x + 1, y, map, found_e);
 	flood(x -1, y, map, found_e);
@@ -36,8 +33,6 @@ int	main_fill(char **map)
 	char	**copy;
 	int		found_e;
 
-	x_player = 1;
-	y_player = 1;
 	copy = copy_map(map);
 	found_e = 0;
 	get_coord(&x_player, &y_player, 'P', copy);
