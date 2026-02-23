@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:37:03 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/23 14:51:18 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/23 18:35:16 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 void	game_engine(char **map)
 {
-	mlx_context				mlx;
+	t_game	game;
 
 	(void)map;
-	mlx = mlx_init();
-
-	mlx_destroy_context(mlx);
+	game.mlx = mlx_init();
+	window(game, "Test du titre", 400, 400);
+	mlx_destroy_context(game.mlx);
 }

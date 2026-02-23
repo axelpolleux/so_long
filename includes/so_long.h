@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 15:23:49 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/23 14:53:39 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/23 18:34:02 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@
 // ____________________
 // <<<<<< INCLUDES >>>>>
 // ^^^^^^^^^^^^^^^^^^^^
+#include "MacroLibX/includes/mlx.h"
 # include "mlx.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+//A retirer absolument
+# include <stdio.h>
 
 // ___________________
 // <<<<<< TYPES >>>>>>>
@@ -30,6 +34,19 @@ typedef struct s_player
 	int	pos_x;
 	int	pos_y;
 }	t_player;
+
+typedef struct	s_game
+{
+	mlx_context	mlx;
+	mlx_window	win;
+	
+	char		**map;
+	void		*img_wall;
+	void		*img_floor;
+	void		*img_player;
+	void		*img_collectible;
+	void		*img_exit;
+}	t_game;
 
 // __________________
 // <<<<<< MAIN >>>>>>>
@@ -65,5 +82,6 @@ int		not_this_char(char **map, char *chars);
 // <<<<<< GAME >>>>>>>
 // ^^^^^^^^^^^^^^^^^^
 void	game_engine(char **map);
-void	create_window(mlx_context mlx);
+void	window(t_game game, char *title, int size_x, int size_y);
+
 #endif
