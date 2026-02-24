@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 14:49:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/24 12:50:01 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/24 16:20:37 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	win_event(int event, void *param)
 {
-	printf("Window event: %d\n", event);
 	if (event == 0)
 		close_manager(param);
 }

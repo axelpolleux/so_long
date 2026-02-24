@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 15:23:49 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/24 12:50:08 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/24 16:02:03 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 //A retirer absolument
 # include <stdio.h>
+//!!!!!!! ATTENTION !!!!!!!
 
 // ___________________
 // <<<<<< TYPES >>>>>>>
@@ -40,11 +41,11 @@ typedef struct	s_game
 	mlx_window	win;
 	
 	char		**map;
-	void		*img_wall;
-	void		*img_floor;
-	void		*img_player;
-	void		*img_collectible;
-	void		*img_exit;
+	mlx_image	img_player;
+	mlx_image	img_wall;
+	mlx_image	img_floor;
+	mlx_image	img_collectible;
+	mlx_image	img_exit;
 }	t_game;
 
 // __________________
@@ -85,5 +86,7 @@ void	window(t_game *game, char *title, int size_x, int size_y);
 void	key_manager(int key, void *param);
 void	close_manager(void *param);
 void	main_scene(t_game *game);
+void	load_images(t_game *game);
+void	free_images(t_game *game);
 
 #endif

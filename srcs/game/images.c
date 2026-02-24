@@ -6,7 +6,32 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 15:02:13 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/24 12:56:45 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/24 16:01:24 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
+
+void	load_images(t_game *game)
+{
+	(void)*game;
+	game->img_player = mlx_new_image_from_file(game->mlx,
+		"textures/player.png", NULL, NULL);
+	game->img_wall = mlx_new_image_from_file(game->mlx,
+		"textures/player.png", NULL, NULL);
+	game->img_floor = mlx_new_image_from_file(game->mlx,
+		"textures/player.png", NULL, NULL);
+	game->img_collectible = mlx_new_image_from_file(game->mlx,
+		"textures/player.png", NULL, NULL);
+	game->img_exit = mlx_new_image_from_file(game->mlx,
+		"textures/player.png", NULL, NULL);
+}
+
+void	free_images(t_game *game)
+{
+	mlx_destroy_image(game->mlx, game->img_player);
+	mlx_destroy_image(game->mlx, game->img_wall);
+	mlx_destroy_image(game->mlx, game->img_floor);
+	mlx_destroy_image(game->mlx, game->img_collectible);
+	mlx_destroy_image(game->mlx, game->img_exit);
+}
