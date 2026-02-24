@@ -6,19 +6,26 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:37:03 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/24 11:10:20 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/24 12:57:14 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "so_long.h"
+
+void	main_scene(t_game *game)
+{
+	t_player	Player;
+
+	(void)game;
+	Player = (t_player){0};
+}
 
 void	game_engine(char **map)
 {
 	t_game	game;
 
-	(void)map;
 	game.mlx = mlx_init();
-	window(game, "Test du titre", 400, 400);
+	game.map = map;
+	window(&game, "Hello so_long", 400, 400);
 	mlx_destroy_context(game.mlx);
 }

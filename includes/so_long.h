@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 15:23:49 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/23 18:34:02 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/24 12:50:08 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 // ____________________
 // <<<<<< INCLUDES >>>>>
 // ^^^^^^^^^^^^^^^^^^^^
-#include "MacroLibX/includes/mlx.h"
 # include "mlx.h"
 # include <fcntl.h>
 # include <stdlib.h>
@@ -82,6 +81,9 @@ int		not_this_char(char **map, char *chars);
 // <<<<<< GAME >>>>>>>
 // ^^^^^^^^^^^^^^^^^^
 void	game_engine(char **map);
-void	window(t_game game, char *title, int size_x, int size_y);
+void	window(t_game *game, char *title, int size_x, int size_y);
+void	key_manager(int key, void *param);
+void	close_manager(void *param);
+void	main_scene(t_game *game);
 
 #endif
