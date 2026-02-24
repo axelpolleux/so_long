@@ -28,7 +28,7 @@ SRCS					:=	$(GNL_SRCS) \
 									srcs/utils/memory_map.c		\
 									srcs/game/init.c			\
 									srcs/game/window.c			\
-									srcs/game/drawing.c			\
+									srcs/game/images.c			\
 									srcs/game/events.c			\
 									srcs/game/hooks.c
 									
