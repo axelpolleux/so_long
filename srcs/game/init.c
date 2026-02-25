@@ -6,30 +6,37 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:37:03 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/24 16:19:46 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/25 19:29:00 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "so_long.h"
 
-void	main_scene(t_game *game)
+static int	count_lines_map(char **map)
 {
-	t_player	Player;
+	int	i;
 
-	(void)game;
-	load_images(game);
-	mlx_put_image_to_window(game->mlx, game->win, game->img_player, 0, 0);
-	free_images(game);
-	Player = (t_player){0};
-
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
 }
 
 void	game_engine(char **map)
 {
-	t_game	game;
+	t_game		game;
+	t_player	player;
+	int			width;
+	int			height;
 
+	game.tile_size = 64;
+	player = (t_player){0};
+	width = ft_strlen(map[0]) * game.tile_size;
+	height = count_lines_map(map) * game.tile_size;
 	game.mlx = mlx_init();
 	game.map = map;
-	window(&game, "Hello so_long", 400, 400);
+	game.player = player;
+	window(&game, "Hello so_long", width, height);
 	mlx_destroy_context(game.mlx);
 }

@@ -3,7 +3,7 @@ CC					:= cc
 CFLAGS				:= -Wall -Werror -Wextra -g
 
 INCLUDES_DIR		:= -Iincludes/ -Iincludes/MacroLibX/includes/
-NAME					:= so_long
+NAME				:= so_long
 
 LIBFT_DIR			:= includes/libft/
 LIBFT				:= $(LIBFT_DIR)libft.a
