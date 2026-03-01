@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 15:23:49 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/01 15:57:44 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/01 17:21:32 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,23 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-//A retirer absolument
-# include <stdio.h>
-//!!!!!!! ATTENTION !!!!!!!
-
 // ___________________
 // <<<<<< TYPES >>>>>>>
 // ^^^^^^^^^^^^^^^^^^^
 typedef struct s_player
 {
-	int	can_exit;
 	int	pos_x;
 	int	pos_y;
-
-	int	collectibles;
+	int	movements;
 }	t_player;
 
 typedef struct	s_game
 {
 	mlx_context	mlx;
 	mlx_window	win;
-	
 	int			tile_size;
 	char		**map;
 	t_player	player;
-
 	mlx_image	img_player;
 	mlx_image	img_wall;
 	mlx_image	img_floor;
@@ -94,5 +86,7 @@ void	close_manager(void *param);
 void	update(void *param);
 int		load_images(t_game *game);
 void	free_images(t_game *game);
+void	display_map(t_game *game);
+
 
 #endif

@@ -6,11 +6,10 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 11:37:19 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/20 11:15:27 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/01 17:38:17 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "so_long.h"
 
 static void	flood(int x, int y, char **map, int *found_e)

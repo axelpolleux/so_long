@@ -7,3 +7,6 @@
 [submodule "includes/MacroLibX"]
 	path = includes/MacroLibX
 	url = git@github.com:seekrs/MacroLibX.git
+[submodule "includes/ft_printf"]
+	path = includes/ft_printf
+	url = git@github.com:axelpolleux/ft_printf.git

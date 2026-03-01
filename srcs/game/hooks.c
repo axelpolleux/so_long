@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 15:02:21 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/01 16:02:01 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/01 17:18:42 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	display_objects(t_game *game)
 	}
 }
 
-static void	display_map(t_game *game)
+void	display_map(t_game *game)
 {
 	int		i;
 	int		j;
@@ -79,6 +79,21 @@ static void	display_map(t_game *game)
 	}
 }
 
+static void	check_coord(t_game *game)
+{
+	int		pos_x;
+	int		pos_y;
+	char	**map;
+
+	pos_x = game->player.pos_x;
+	pos_y = game->player.pos_y;
+	map = game->map;
+	if (map[pos_y][pos_x] == 'C')
+		map[pos_y][pos_x] = 0;
+	else if (map[pos_y][pos_x] == 'E' && !counter(map, 'C'))
+		close_manager(game);
+}
+
 void	update(void *param)
 {
 	mlx_color	color;
@@ -90,6 +105,7 @@ void	update(void *param)
 	color.a = 255;
 	game = (t_game *)param;
 	mlx_clear_window(game->mlx, game->win, color);
+	check_coord(game);
 	display_map(game);
 	display_objects(game);
 	display_player(game);

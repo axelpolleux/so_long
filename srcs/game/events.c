@@ -6,10 +6,11 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 15:02:17 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/01 16:02:40 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/01 18:03:04 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf/ft_printf.h"
 #include "so_long.h"
 
 void	close_manager(void *param)
@@ -20,6 +21,48 @@ void	close_manager(void *param)
 	mlx_loop_end((mlx_context)game->mlx);
 }
 
+static void	move_x(t_game *game, int key)
+{
+	int		pos_x;
+	int		pos_y;
+	char	**map;
+
+	pos_x = game->player.pos_x;
+	pos_y = game->player.pos_y;
+	map = game->map;
+	if (key == 79 && (map[pos_y][pos_x + 1] != '1'))
+	{
+		game->player.pos_x++;
+		ft_printf("Gerard Movement: %d\n", game->player.movements++);
+	}
+	else if (key == 80 && (map[pos_y][pos_x - 1] != '1'))
+	{
+		game->player.pos_x--;
+		ft_printf("Gerard Movement: %d\n", game->player.movements++);
+	}
+}
+
+static void	move_y(t_game *game, int key)
+{
+	int		pos_x;
+	int		pos_y;
+	char	**map;
+
+	pos_x = game->player.pos_x;
+	pos_y = game->player.pos_y;
+	map = game->map;
+	if (key == 81 && (map[pos_y + 1][pos_x] != '1'))
+	{
+		game->player.pos_y++;
+		ft_printf("Gerard Movement: %d\n", game->player.movements++);
+	}
+	else if (key == 82 && (map[pos_y - 1][pos_x] != '1'))
+	{
+		game->player.pos_y--;
+		ft_printf("Gerard Movement: %d\n", game->player.movements++);
+	}
+}
+
 void	key_manager(int key, void *param)
 {
 	t_game	*game;
@@ -27,13 +70,8 @@ void	key_manager(int key, void *param)
 	game = (t_game *)param;
 	if (key == 41)
 		close_manager(param);
-	else if (key == 79)
-		game->player.pos_x++;
-	else if (key == 80)
-		game->player.pos_x--;
-	else if (key == 81)
-		game->player.pos_y++;
-	else if (key == 82)
-		game->player.pos_y--;
-	printf("KeyDown: %d\n", key);
+	else if (key >= 79 && key <= 80)
+		move_x(game, key);
+	else if (key >= 81 && key <= 82)
+		move_y(game, key);
 }

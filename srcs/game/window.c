@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 14:49:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/01 16:16:47 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/01 16:49:34 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	window(t_game *game, char *title, int x, int y)
 	mlx_on_event(game->mlx, game->win, MLX_KEYDOWN, key_manager, game);
 	if (load_images(game))
 	{
+		display_map(game);
 		mlx_add_loop_hook(game->mlx, update, game);
 		mlx_loop(game->mlx);
 	}

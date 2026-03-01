@@ -8,6 +8,9 @@ NAME				:= so_long
 LIBFT_DIR			:= includes/libft/
 LIBFT				:= $(LIBFT_DIR)libft.a
 
+PRINTF_DIR  		:= includes/ft_printf
+PRINTF      		:= $(PRINTF_DIR)/libftprintf.a
+
 GNL_DIR				:= includes/get_next_line/
 GNL_SRCS			:=	$(GNL_DIR)get_next_line.c \
 						$(GNL_DIR)get_next_line_utils.c
@@ -38,15 +41,19 @@ OBJS					:= $(SRCS:.c=.o)
 #________________RULES________________
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(MLX) $(OBJS)
+$(NAME): $(LIBFT) $(PRINTF) $(MLX) $(OBJS)
 	@printf "\n✔ BUILD COMPLETE\n"
-	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(LIBFT) $(MLX) -lSDL2 -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(LIBFT) $(PRINTF) $(MLX) -lSDL2 -o $(NAME)
 
 
 #________________LIBS________________
 $(LIBFT):
 	@echo "Libft [COMPILING]"
 	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
+
+$(PRINTF):
+	@echo "[PRINTF] compiling..."
+	@$(MAKE) -C $(PRINTF_DIR) --no-print-directory
 
 $(MLX):
 	@echo "MacroLibX [COMPILING]"
@@ -59,10 +66,14 @@ clean:
 	@echo "[CLEAN]"
 	@rm -f $(OBJS)
 	@$(MAKE) -C $(LIBFT_DIR) clean --no-print-directory
+	@$(MAKE) -C $(PRINTF_DIR) clean --no-print-directory
+	@$(MAKE) -C $(MLX_DIR) clean --no-print-directory
 
 fclean: clean
 	@echo "[FCLEAN]"
 	@$(MAKE) -C $(LIBFT_DIR) clean --no-print-directory
+	@$(MAKE) -C $(PRINTF_DIR) clean --no-print-directory
+	@$(MAKE) -C $(MLX_DIR) clean --no-print-directory
 	@rm -f $(NAME)
 
 re: fclean all
