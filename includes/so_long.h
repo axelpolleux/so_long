@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 15:23:49 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/25 19:06:58 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/01 15:57:44 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_player
 	int	can_exit;
 	int	pos_x;
 	int	pos_y;
+
+	int	collectibles;
 }	t_player;
 
 typedef struct	s_game
@@ -90,7 +92,7 @@ void	window(t_game *game, char *title, int size_x, int size_y);
 void	key_manager(int key, void *param);
 void	close_manager(void *param);
 void	update(void *param);
-void	load_images(t_game *game);
+int		load_images(t_game *game);
 void	free_images(t_game *game);
 
 #endif

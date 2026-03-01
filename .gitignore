@@ -63,4 +63,6 @@ So_long_map_generator/
 # other executables
 *.ber
 so_long
+.clangd
+compile_flags.txt
 maps/

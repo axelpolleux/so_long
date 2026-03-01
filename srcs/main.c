@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axel <axel@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 15:24:00 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/20 19:09:15 by axel             ###   ########.fr       */
+/*   Updated: 2026/02/27 18:00:50 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	error(char *str)
 {
 	ft_putstr_fd("Error !\n", 2);
 	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
 	return (0);
 }
 
