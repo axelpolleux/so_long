@@ -6,11 +6,12 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:37:03 by apolleux          #+#    #+#             */
-/*   Updated: 2026/02/27 18:18:08 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/01 18:44:31 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
+#include "mlx.h"
 #include "so_long.h"
 
 static int	count_lines_map(char **map)
