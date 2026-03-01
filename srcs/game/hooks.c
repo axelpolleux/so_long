@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 15:02:21 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/01 17:18:42 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/01 18:12:11 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static void	check_coord(t_game *game)
 	pos_y = game->player.pos_y;
 	map = game->map;
 	if (map[pos_y][pos_x] == 'C')
-		map[pos_y][pos_x] = 0;
+		map[pos_y][pos_x] = '0';
 	else if (map[pos_y][pos_x] == 'E' && !counter(map, 'C'))
 		close_manager(game);
 }
