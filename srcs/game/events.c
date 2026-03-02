@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axel <axel@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 15:02:17 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/01 18:08:25 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/03 00:43:54 by axel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ static void	move_x(t_game *game, int key)
 	if (key == 79 && (map[pos_y][pos_x + 1] != '1'))
 	{
 		game->player.pos_x++;
-		ft_printf("Gerard Movement: %d\n", game->player.movements++);
+		ft_printf("Gerard Movement: %d\r", game->player.movements++);
 	}
 	else if (key == 80 && (map[pos_y][pos_x - 1] != '1'))
 	{
 		game->player.pos_x--;
-		ft_printf("Gerard Movement: %d\n", game->player.movements++);
+		ft_printf("Gerard Movement: %d\r", game->player.movements++);
 	}
 }
 
@@ -54,12 +54,12 @@ static void	move_y(t_game *game, int key)
 	if (key == 81 && (map[pos_y + 1][pos_x] != '1'))
 	{
 		game->player.pos_y++;
-		ft_printf("Gerard Movement: %d\n", game->player.movements++);
+		ft_printf("Gerard Movement: %d\r", game->player.movements++);
 	}
 	else if (key == 82 && (map[pos_y - 1][pos_x] != '1'))
 	{
 		game->player.pos_y--;
-		ft_printf("Gerard Movement: %d\n", game->player.movements++);
+		ft_printf("Gerard Movement: %d\r", game->player.movements++);
 	}
 }
 

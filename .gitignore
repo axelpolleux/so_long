@@ -63,6 +63,7 @@ So_long_map_generator/
 # other executables
 *.ber
 so_long
+Dockerfile
 .clangd
 compile_flags.txt
 maps/
