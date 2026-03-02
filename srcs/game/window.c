@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 14:49:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/01 18:53:22 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/02 11:51:26 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,18 @@ void	win_event(int event, void *param)
 		close_manager(param);
 }
 
-static	int	check_screen_size(t_game *game, int w_map, int h_map)
+static int	check_screen_size(t_game *game, int w_map, int h_map)
 {
-	int	width = 0;
-	int	height = 0;
+	int	width;
+	int	height;
 
+	width = 0;
+	height = 0;
 	mlx_get_screen_size(game->mlx, game->win, &width, &height);
 	if (h_map > height || w_map > width)
 		return (error("Map overcomes screen size"));
 	return (1);
-} 
+}
 
 void	window(t_game *game, char *title, int x, int y)
 {
