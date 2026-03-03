@@ -6,10 +6,11 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 15:02:21 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/01 18:12:11 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/03 10:05:11 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf/ft_printf.h"
 #include "so_long.h"
 
 static void	display_player(t_game *game)
@@ -91,7 +92,10 @@ static void	check_coord(t_game *game)
 	if (map[pos_y][pos_x] == 'C')
 		map[pos_y][pos_x] = '0';
 	else if (map[pos_y][pos_x] == 'E' && !counter(map, 'C'))
+	{
 		close_manager(game);
+		ft_printf("Gerard made it in %d movements !\n", game->player.movements);
+	}
 }
 
 void	update(void *param)

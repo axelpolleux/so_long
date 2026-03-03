@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:37:03 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/01 18:44:31 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/03 10:04:01 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	game_engine(char **map)
 
 	game.tile_size = 64;
 	player = (t_player){0};
+	player.movements = 1;
 	width = ft_strlen(map[0]) * game.tile_size;
 	height = count_lines_map(map) * game.tile_size;
 	game.mlx = mlx_init();
