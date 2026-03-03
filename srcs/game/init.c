@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:37:03 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/03 10:04:01 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/03 10:09:54 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ void	game_engine(char **map)
 	game.map = map;
 	game.player = player;
 	get_coord(&game.player.pos_y, &game.player.pos_x, 'P', map);
-	window(&game, "Hello so_long", width, height);
+	window(&game, "So_long Depardieu", width, height);
 	mlx_destroy_context(game.mlx);
 }

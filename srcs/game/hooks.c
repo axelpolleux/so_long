@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 15:02:21 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/03 10:05:11 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/03 10:10:09 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static void	check_coord(t_game *game)
 	else if (map[pos_y][pos_x] == 'E' && !counter(map, 'C'))
 	{
 		close_manager(game);
-		ft_printf("Gerard made it in %d movements !\n", game->player.movements);
+		ft_printf("Gerard made it in %d movements !\n", game->player.movements - 1);
 	}
 }
 
