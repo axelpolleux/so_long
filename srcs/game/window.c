@@ -6,14 +6,14 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 14:49:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/03 09:58:14 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/03 10:22:22 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 void	win_event(int event, void *param)
-{	
+{
 	if (event == 0)
 		close_manager(param);
 }
